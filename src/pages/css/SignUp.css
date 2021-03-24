@@ -1,0 +1,19 @@
+.signupBox{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    font-size: 2rem;
+
+}
+
+.signupInBox{
+    position: relative;
+    height: 60%;
+    width: 40%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    background-color: rgba(6, 231, 6, 0.932);
+    padding: 1rem 2rem;
+    border-radius: 10px;
+}
