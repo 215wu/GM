@@ -16,16 +16,18 @@ class TopBar extends Component{
             <div className="topBar">
                 <div id="topBarLogo">
                     <div style={{ position: "relative",top: "50%",transform: "translateY(-50%)", display: "inline-block"}}>
-                        <img alt="logo" className="ui avatar image "src={Logo} style={{width:"20vh",height:"20vh"}}></img>
+                        <NavLink to="/home">
+                            <img alt="logo" className="ui avatar image "src={Logo} style={{width:"20vh",height:"20vh"}}></img>
+                        </NavLink>
                     </div>
                 </div>
                 <div  id="topBarList" >
                     <div style={{ position: "relative",top: "50%",transform: "translateY(-50%)"}}>
-                        <button className="ui button"><NavLink to="/home">首页</NavLink></button>
-                        <button className="ui button">关于我们</button>
-                        <button className="ui button">门店信息</button>
-                        <button className="ui button">明星教练</button>
-                        <button className="ui button">热门课程</button>
+                        <NavLink to="/home"><button className="ui button">首页</button></NavLink>
+                        <NavLink to="/home"><button className="ui button">门店信息</button></NavLink>
+                        <NavLink to="/home"><button className="ui button">关于我们</button></NavLink>
+                        <NavLink to="/home"><button className="ui button">明星教练</button></NavLink>
+                        <NavLink to="/home"><button className="ui button">热门课程</button></NavLink>
                     </div>
                 </div>
                 <div id="topBarEnter">
@@ -39,5 +41,4 @@ class TopBar extends Component{
         );
     }
 }
-
 export default withRouter(TopBar);
