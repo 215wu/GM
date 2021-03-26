@@ -40,8 +40,12 @@ class Login extends Component{
                                 <label>我同意条款和条件</label>
                             </div>
                         </div>
-                        <button className="ui primary button" type="submit"><NavLink className="path" to='/home'>登录</NavLink></button>
-                        <button className="ui button" id="signupBtn"><NavLink className="path" to='/signup'>注册</NavLink></button>
+                            <NavLink className="path" to='/home'>
+                                <button className="ui primary button" type="submit">登录</button>
+                            </NavLink>
+                            <NavLink className="path" to='/signup'>
+                                <button className="ui button" id="signupBtn">注册</button>
+                            </NavLink>
                         
                     </form>
                 </div>
