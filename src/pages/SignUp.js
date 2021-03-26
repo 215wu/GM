@@ -49,7 +49,9 @@ class SignUp extends Component{
                                 <label>我同意条款和条件</label>
                             </div>
                         </div>
-                        <button className="ui button" type="submit"><NavLink className="path" to='/home'>注册</NavLink></button>                        
+                        <NavLink className="path" to='/home'>
+                            <button className="ui button" type="submit">注册</button> 
+                        </NavLink>                       
                     </form>
                 </div>
             </div>
