@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { NavLink, withRouter } from "react-router-dom";
-import {Button,Form,Image,Header,Message,Loader} from "semantic-ui-react";
+import {Button,Form,Image,Header,Message} from "semantic-ui-react";
 import axios from "axios";
 import "./css/Login.css"
 import Logo from "../images/logo_black.PNG"
@@ -9,7 +9,7 @@ class Login extends Component{
     constructor(props){
         super(props);
         this.state = {
-            alert:0b110000,  //第一位表示邮箱。第二位表示密码
+            alert:0b1110000,  //第一位表示邮箱。第二位表示密码
             list:[
                 "请输入符合正确格式的邮箱账号！",
                 "输入的密码位数为8-18位！",
@@ -30,19 +30,19 @@ class Login extends Component{
         const regE =new RegExp('^[0-9a-zA-Z_-]+@[0-9a-zA-Z_-]+(.[a-zA-Z]+)+$');
         const regP =new RegExp('^[0-9a-zA-Z_-\\W]{8,18}$');
         let { alert,  pwd ,email} = this.state;
-        alert = alert & 0b001111;//清除初始化提示消息
+        alert = alert & 0b1001111;//清除初始化提示消息
         if(!regE.test(email)){
-            alert = alert | 0b001000;//第三位邮箱提示消息值为真
+            alert = alert | 0b0001000;//第三位邮箱提示消息值为真
             
         }else{
-            alert = alert & 0b110111;//第三位邮箱提示消息值为假
+            alert = alert & 0b1110111;//第三位邮箱提示消息值为假
             
         }
         if(!regP.test(pwd)){
-            alert = alert | 0b000100;
+            alert = alert | 0b0000100;
             
         }else{
-            alert = alert & 0b111011;
+            alert = alert & 0b1111011;
         }
         this.setState({
             alert:alert,
@@ -67,7 +67,7 @@ class Login extends Component{
                     this.props.history.push("/home");
                 } else {
                     this.setState({
-                        alert: 0b000011
+                        alert: 0b1000011
                     });
                 }
                 console.log(res);
@@ -88,9 +88,9 @@ class Login extends Component{
             let list = this.state.list;
             let num = Array.prototype.map.call(ale.toString(2),(e=>+e));
             console.log(num);
-            for(let i = 0;i<num.length-1;i--){
+            for(let i = 1;i<num.length-1;i++){
                 if(num[i]===1){
-                    console.log(list[i]);
+                    console.log(list[i-1]);
                     string = string + list[i];
                 }
             }
