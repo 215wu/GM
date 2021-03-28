@@ -11,8 +11,8 @@ class Login extends Component{
         this.state = {
             alert:0b1110000,  //第一位表示邮箱。第二位表示密码
             list:[
-                "请输入符合正确格式的邮箱账号！",
-                "输入的密码位数为8-18位！",
+                "\u25B2请输入符合正确格式的邮箱账号！",
+                "\u25B2输入的密码位数为8-18位！",
                 "输入的邮箱格式不正确！",
                 "输入的密码位数不符合条件:8-18位！",
                 "用户不存在,请到注册页面注册！",
@@ -91,7 +91,7 @@ class Login extends Component{
             for(let i = 1;i<num.length-1;i++){
                 if(num[i]===1){
                     console.log(list[i-1]);
-                    string = string + list[i];
+                    string = string + list[i-1];
                 }
             }
             alert = <Message>{string}</Message>
