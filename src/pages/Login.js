@@ -30,12 +30,14 @@ class Login extends Component{
         const regE =new RegExp('^[0-9a-zA-Z_-]+@[0-9a-zA-Z_-]+(.[a-zA-Z]+)+$');
         const regP =new RegExp('^[0-9a-zA-Z_-\\W]{8,18}$');
         let { alert,  pwd ,email} = this.state;
+        console.log(pwd ,email);
+        console.log(regE.test(email) ,regP.test(pwd));
         alert = alert & 0b1001111;//清除初始化提示消息
         if(!regE.test(email)){
-            alert = alert | 0b0001000;//第三位邮箱提示消息值为真
+            alert = alert | 0b0001000;//第四位邮箱提示消息值为真
             
         }else{
-            alert = alert & 0b1110111;//第三位邮箱提示消息值为假
+            alert = alert & 0b1110111;//第四位邮箱提示消息值为假
             
         }
         if(!regP.test(pwd)){
@@ -54,16 +56,19 @@ class Login extends Component{
 
     signRequest(){
         if(this.verifyFormat()){
+            console.log("格式正确！");
+
             axios
             .post("/auth/login", {
                 email: this.state.email,
-                psw: this.state.psw
+                pwd: this.state.pwd
             })
             .then(res => {
                 console.log(res);
                 if (res.data.status === true) {
-                    this.props.updateId(res.data.id);
-                    this.props.updateToken(res.data.token);
+
+                    //this.props.updateId(res.data.id);
+                    //this.props.updateToken(res.data.token);
                     this.props.history.push("/home");
                 } else {
                     this.setState({
@@ -109,7 +114,11 @@ class Login extends Component{
                             <label>邮箱账号</label>
                             <div className="ui left icon input">
                                 <input type="text" name="id" placeholder="请输入账号" 
-                                onChange={e=>this.setState({email:e.target.value})}></input>
+                                onChange={e=>{
+                                    this.setState({email:e.target.value});
+                                    console.log("onchange email");
+                                    }}>
+                                </input>
                                 <i className="user icon"></i>
                             </div>
                         </div>
@@ -117,7 +126,11 @@ class Login extends Component{
                             <label>密码</label>
                             <div className="ui left icon input">
                                 <input type="text" name="password" placeholder="请输入密码"
-                                onChange={e=>this.setState({email:e.target.value})}></input>
+                                onChange={e=>{
+                                    this.setState({pwd:e.target.value});
+                                    console.log("onchange psw");
+                                    }}>
+                                </input>
                                 <i className="lock icon"></i>
                             </div>
                         </div>
