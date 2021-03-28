@@ -1,16 +1,20 @@
-const proxy = require("http-proxy-middleware");
+const  { createProxyMiddleware } = require('http-proxy-middleware');
 
 module.exports = function(app) {
   app.use(
-    proxy("/api", {
+    createProxyMiddleware("/api",{
       target: "http://localhost:3002",
-      changeOrigin: true
+      changeOrigin: true,
+      secure: false, // 是否验证证书
+      ws: true, // 启用websocket
     })
   );
   app.use(
-    proxy("/auth", {
+    createProxyMiddleware("/auth",{
       target: "http://localhost:3002",
-      changeOrigin: true
-    })
+      changeOrigin: true,
+      secure: false, // 是否验证证书
+      ws: true, // 启用websocket
+      })
   );
 };
