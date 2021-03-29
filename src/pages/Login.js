@@ -11,8 +11,8 @@ class Login extends Component{
         this.state = {
             alert:0b1110000,  //第一位表示邮箱。第二位表示密码
             list:[
-                "\u25B2请输入符合正确格式的邮箱账号！",
-                "\u25B2输入的密码位数为8-18位！",
+                "\u25B21、请输入符合正确格式的邮箱账号！",
+                "\u25B22、输入的密码位数为8-18位！",
                 "输入的邮箱格式不正确！",
                 "输入的密码位数不符合条件:8-18位！",
                 "用户不存在,请到注册页面注册！",
@@ -20,7 +20,6 @@ class Login extends Component{
             ],
             email:"",
             pwd:"",
-            exsit:false,
             load:false
         }
     }
@@ -30,8 +29,7 @@ class Login extends Component{
         const regE =new RegExp('^[0-9a-zA-Z_-]+@[0-9a-zA-Z_-]+(.[a-zA-Z]+)+$');
         const regP =new RegExp('^[0-9a-zA-Z_-\\W]{8,18}$');
         let { alert,  pwd ,email} = this.state;
-        console.log(pwd ,email);
-        console.log(regE.test(email) ,regP.test(pwd));
+        //console.log(this.state.pwd ,this.state.email);
         alert = alert & 0b1001111;//清除初始化提示消息
         if(!regE.test(email)){
             alert = alert | 0b0001000;//第四位邮箱提示消息值为真
@@ -49,14 +47,16 @@ class Login extends Component{
         this.setState({
             alert:alert,
         });
-        return regE.test(this.state.email) && regP.test(this.state.email);
+        //console.log(regE.test(email)&&regP.test(pwd));
+        //console.log(regE.test(this.state.email) && regP.test(this.state.pwd));
+        return regE.test(this.state.email) && regP.test(this.state.pwd);
     }
 
     
 
     signRequest(){
         if(this.verifyFormat()){
-            console.log("格式正确！");
+            //console.log("格式正确！");
 
             axios
             .post("/auth/login", {
@@ -93,13 +93,14 @@ class Login extends Component{
             let list = this.state.list;
             let num = Array.prototype.map.call(ale.toString(2),(e=>+e));
             console.log(num);
-            for(let i = 1;i<num.length-1;i++){
+            for(let i = 1;i<num.length;i++){
                 if(num[i]===1){
                     console.log(list[i-1]);
                     string = string + list[i-1];
                 }
             }
-            alert = <Message>{string}</Message>
+            alert = (!string)? <div></div> :  <Message>{string}</Message>;
+            
         }
         
         return(
@@ -137,12 +138,15 @@ class Login extends Component{
                         <div className="field">
                             {alert}
                         </div>
-                            
-                                <Button className="ui primary button" type="submit" onClick={()=>this.signRequest()}>登录</Button>
-                            
-                            <NavLink className="path" to='/signup'>
+                        <div className="field">
+                            <Button className="ui primary button" type="submit" onClick={()=>this.signRequest()}>登录</Button>
+                        </div><div className="field">
+                           <NavLink className="path" to='/signup'>
                                 <Button className="ui button" id="signupBtn">注册</Button>
-                            </NavLink>
+                            </NavLink> 
+                        </div>
+                            
+                            
                         
                     </Form>
                 </div>
