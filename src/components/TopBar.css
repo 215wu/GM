@@ -2,6 +2,7 @@
     position: relative;
     height: 20vh;
     width: 100vw;
+    background-color:black;
 }
 #topBarLogo,#topBarEnter,#topBarList{
     position: relative;
@@ -12,18 +13,18 @@
 
 #topBarLogo{
     width: 20%;
-    background-color: rgb(5, 46, 46);
+    /* background-color: rgb(5, 46, 46); */
     vertical-align: bottom;
 }
 
 #topBarEnter{
     width: 20%;
-    background-color:aquamarine;
+    /* background-color:aquamarine; */
     vertical-align: bottom;
 }
 
 #topBarList{
     width: 60%;
-    background-color: rgb(19, 153, 243);
+   /*  background-color: rgb(19, 153, 243); */
     vertical-align: bottom;
 }

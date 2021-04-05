@@ -4,10 +4,12 @@ import './App.css';
 import Login from "./pages/Login";
 import Signup from "./pages/SignUp";
 import Home from "./pages/Home";
-import Membershop from "./pages/Membershop";
-import Gymcenter from "./pages/Gymcenter";
-import Coach from "./pages/Coach";
-import Course from "./pages/Course";
+
+import Img1 from "./images/sp1.png";
+import Img2 from "./images/sp2.png";
+import Img3 from "./images/sp3.png";
+import Img4 from "./images/sp4.png";
+
 
 
 class App extends Component{
@@ -21,21 +23,15 @@ class App extends Component{
       <BrowserRouter>
         <div className="App">
           <Switch>
-            <Route exact path="/" component={Home} />
+            <Route exact path="/"  >
+                <Home imgList={[Img1,Img2,Img3,Img4]}></Home>
+            </Route>             
             <Route path="/login" component={Login} />
             <Route path="/signup" component={Signup} />
-            <div>
-              <div>
-                
-              </div>
-              <div style={{ margin: "10px 10px 10px 10px" }}>
-                <Route path="/home" component={Home} />
-                <Route path="/membershop" component={Membershop} />
-                <Route path="/gymcenter/:gymcenter_id" component={Gymcenter} />
-                <Route path="/coach/:coach_id" component={Coach} />
-                <Route path="/course/:course_id" component={Course} />
-              </div>
-            </div>
+            <Route path="/gymcenter" component={Home} />
+            <Route path="/about" component={Home} />
+            <Route path="/coach" component={Home} />
+            <Route path="/course" component={Home} />
           </Switch>
         </div>
       </BrowserRouter>

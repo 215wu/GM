@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import { NavLink, withRouter } from "react-router-dom";
 import {Button,Form,Image,Header,Message} from "semantic-ui-react";
-import "./css/SignUp.css"
+import axios from "axios";
+import "./css/SignUp.css";
 import Logo from "../images/logo_black.PNG"
 
 
@@ -38,13 +39,23 @@ class SignUp extends Component{
         this.setState({
             alert:alert,
         });
-        return regE.test(email)&&regP.test(pwd)&&name&&(pwd !== pwdConfirm);
+        return regE.test(email)&&regP.test(pwd)&&name&&(pwd === pwdConfirm);
     };   
 
-    verifySignup(){
+    sendSignupRequest(){
         if(this.verifyFormat()){
-            console.log("格式正确！");
-
+           // console.log("格式正确！");
+            axios
+            .post("auth/signup",{
+                email:this.state.email,
+                pwd:this.state.pwd,
+                name:this.state.name
+            })
+            .then(res=>{
+                //console.log("注册成功");
+                //console.log(res);
+                this.props.history.push("/home");
+            })
         }
     };
 
@@ -83,7 +94,7 @@ class SignUp extends Component{
                         <div className="field">
                             <label>昵称</label>
                             <div className="ui left icon input">
-                                <input type="text" name="password" placeholder="请输入昵称"
+                                <input type="text"  placeholder="请输入昵称"
                                 onChange={event=>{
                                     this.setState({
                                         name:event.target.value
@@ -95,7 +106,7 @@ class SignUp extends Component{
                        <div className="field">
                             <label>密码</label>
                             <div className="ui left icon input">
-                                <input type="text" name="password" placeholder="请输入密码"
+                                <input type="password" name="password" placeholder="请输入密码"
                                 onChange={event=>{
                                     this.setState({
                                         pwd:event.target.value
@@ -107,7 +118,7 @@ class SignUp extends Component{
                         <div className="field">
                             <label>确认密码</label>
                             <div className="ui left icon input">
-                                <input type="text" name="password" placeholder="请再次输入密码"
+                                <input type="password" name="password" placeholder="请再次输入密码"
                                 onChange={event=>{
                                     this.setState({
                                         pwdConfirm:event.target.value
@@ -118,11 +129,12 @@ class SignUp extends Component{
                         </div>
                         {alertInfo}
                         <div className="field">
-                           <Button fluid size="large" color="primary" type="submit" 
-                            onClick={()=>this.verifySignup()}>注册</Button>
+                           <Button fluid size="large" color="blue" type="submit" 
+                            onClick={()=>this.sendSignupRequest()}>注册</Button>
                         </div>
-                        <div className="field">
-                            <NavLink to="/login"><Button fluid size="large">去登录</Button></NavLink>
+                        <div className="field" style={{textAlign:"center"}}>
+                            <p>已有帐号,<NavLink className="path" to="/login"><strong>去登录</strong></NavLink></p>
+                            <NavLink className="path" to="/"><strong>回到主页</strong></NavLink>
                         </div>
                     </Form>
                 </div>

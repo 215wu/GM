@@ -1,0 +1,64 @@
+.Swipper{
+  position: relative;
+  width: 100vw;
+  height: 70vh;
+  margin: 0 0;
+  padding: 0px;
+}
+.imgList{
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
+  }
+ 
+  .slogan{
+    position: absolute;
+    font-size: 5rem;
+    color: azure;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    z-index: 20;
+    text-align: center;
+}
+  .imgList{
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+  .imgList .imgItem{
+    position: absolute;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: -1;
+  }
+  .imgList .imgItem.active{
+    z-index: 10;
+  }
+
+  
+  .imgList .imgItem img{
+    width: 100%;
+  }
+  .Swipper .arrow{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0,0,0,0);
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: all .3s;
+    z-index: 20;
+  }
+  .Swipper .arrow:hover{
+    background: rgba(0,0,0,.8);
+  }
+  .Swipper .arrow.left{
+    left: 0px;
+  }
+  .Swipper .arrow.right{
+    right: 0px;
+  }

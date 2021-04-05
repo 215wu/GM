@@ -10,7 +10,7 @@ class Course extends Component{
 
     render(){
         return(
-            <div>Course</div>
+            <div className="Course">Course</div>
         );
     }
 }

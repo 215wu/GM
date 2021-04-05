@@ -10,7 +10,7 @@ class Coach extends Component{
 
     render(){
         return(
-            <div>Coach</div>
+            <div className="Coach">Coach</div>
         );
     }
 }

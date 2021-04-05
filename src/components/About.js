@@ -10,7 +10,7 @@ class Membershop extends Component{
 
     render(){
         return(
-            <div>Membershop</div>
+            <div className="About">About</div>
         );
     }
 }

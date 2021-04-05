@@ -10,7 +10,7 @@ class Gymcenter extends Component{
 
     render(){
         return(
-            <div>Gymcenter</div>
+            <div className="gymCenter">Gymcenter</div>
         );
     }
 }
