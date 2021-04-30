@@ -10,7 +10,9 @@ class Coach extends Component{
 
     render(){
         return(
-            <div className="Coach">Coach</div>
+            <div className="Coach">
+                <p style={{fontSize:"3rem",color:"white"}}>Coach</p>
+            </div>
         );
     }
 }

@@ -10,7 +10,9 @@ class Membershop extends Component{
 
     render(){
         return(
-            <div className="About">About</div>
+            <div className="About">
+                <p style={{fontSize:"3rem",color:"white"}}>About</p>
+            </div>
         );
     }
 }

@@ -9,12 +9,14 @@ class Login extends Component{
     constructor(props){
         super(props);
         this.state = {
-            alert:0b10000,  //第一位表示邮箱。第二位表示密码
+            alert:0b1000000,  //第一位表示邮箱。第二位表示密码
             list:[
                 "\u25B2输入的邮箱格式不正确！\u000A",
-                "\u25B2输入的密码位数不符合条件:8-18位！\u000A",
+                "\u25B2密码位数错误！\u000A",
                 "\u25B2用户不存在,请到注册页面注册！\u000A",
-                "\u25B2密码输入错误！"
+                "\u25B2密码输入错误！",
+                "\u25B2密码错误！\u000A",
+                "\u25B2或用户不存在！",
             ],
             email:"",
             pwd:"",
@@ -27,19 +29,20 @@ class Login extends Component{
         const regE =new RegExp('^[0-9a-zA-Z_-]+@[0-9a-zA-Z_-]+(.[a-zA-Z]+)+$');
         const regP =new RegExp('^[0-9a-zA-Z_-\\W]{8,18}$');
         let { alert,  pwd ,email} = this.state;
+        alert=0b1000000;
         //console.log(this.state.pwd ,this.state.email);
         if(!regE.test(email)){
-            alert = alert | 0b01000;//第四位邮箱提示消息值为真
+            alert = alert | 0b0100000;//第四位邮箱提示消息值为真
             
         }else{
-            alert = alert & 0b10111;//第四位邮箱提示消息值为假
+            alert = alert & 0b1011111;//第四位邮箱提示消息值为假
             
         }
         if(!regP.test(pwd)){
-            alert = alert | 0b00100;
+            alert = alert | 0b0010000;
             
         }else{
-            alert = alert & 0b11011;
+            alert = alert & 0b1101111;
         }
         this.setState({
             alert:alert,
@@ -66,11 +69,14 @@ class Login extends Component{
 
                     //this.props.updateId(res.data.id);
                     //this.props.updateToken(res.data.token);
+                    alert("登录成功！");
                     this.props.history.push("/home");
                 } else {
+                    alert("登录有误，请查看提示信息！");
                     this.setState({
                         alert: 0b1000011
                     });
+
                 }
                 //console.log(res);
             })

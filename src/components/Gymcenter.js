@@ -10,7 +10,9 @@ class Gymcenter extends Component{
 
     render(){
         return(
-            <div className="gymCenter">Gymcenter</div>
+            <div className="gymCenter">
+                <p style={{fontSize:"3rem",color:"white"}}>Gymcenter</p>
+            </div>
         );
     }
 }

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { NavLink, withRouter ,Link} from "react-router-dom";
+import { NavLink, withRouter ,Link,Switch , Route} from "react-router-dom";
 import { Button} from 'semantic-ui-react';
 import Logo from "../images/logo_blue.PNG";
 import "./TopBar.css"
@@ -36,12 +36,20 @@ class TopBar extends Component{
                         </Button.Group>
                     </div>
                 </div>
-                <div id="topBarEnter">
-                    <div  style={{ position: "absolute",top: "50%",left:"20%",transform: "translateY(-50%)"}}>
-                        <NavLink to="/login"><Button inverted size='big'>登录</Button></NavLink>
-                        <NavLink to="/signup"><Button inverted size='big'>注册</Button></NavLink>
-                    </div>
-                </div>
+                <Switch>
+                    <Route path="/">
+                        <div id="topBarEnter">
+                            <div  style={{ position: "absolute",top: "50%",left:"20%",transform: "translateY(-50%)"}}>
+                                <NavLink to="/login"><Button inverted size='big'>登录</Button></NavLink>
+                                <NavLink to="/signup"><Button inverted size='big'>注册</Button></NavLink>
+                            </div>
+                        </div>
+                    </Route>
+                    <Route path="/home">
+                        <p style={{fontSize:"3rem",color:"white"}}>登录成功</p>
+                    </Route>
+                </Switch>
+
                 
             </div>
         );

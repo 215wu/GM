@@ -16,7 +16,7 @@ class Home extends Component{
     constructor(props){
         super(props);
         this.state = {
-            
+            images:this.props.imgList
         }
     }
 
@@ -26,10 +26,10 @@ class Home extends Component{
                 <TopBar></TopBar>
                 <Switch>
                     <Route exact path="/" >
-                        <Swipper imgList={this.props.imgList}></Swipper>
+                        <Swipper imgList={this.state.images}></Swipper>
                     </Route>                  
-                    <Route path="/home" component={Swipper} >
-                        <Swipper imgList={this.props.imgList}></Swipper>
+                    <Route path="/home">
+                        <p style={{fontSize:"3rem",color:"white"}}>登录之后的页面</p>
                     </Route>               
                     <Route path="/about" component={About} />
                     <Route path="/gymcenter" component={Gymcenter} />

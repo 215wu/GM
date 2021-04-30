@@ -10,7 +10,9 @@ class Course extends Component{
 
     render(){
         return(
-            <div className="Course">Course</div>
+            <div className="Course">
+                <p style={{fontSize:"3rem",color:"white"}}>Course</p>
+            </div>
         );
     }
 }

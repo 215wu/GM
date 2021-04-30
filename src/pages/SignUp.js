@@ -54,6 +54,7 @@ class SignUp extends Component{
             .then(res=>{
                 //console.log("注册成功");
                 //console.log(res);
+                alert("注册成功！将自动登录！");
                 this.props.history.push("/home");
             })
         }
