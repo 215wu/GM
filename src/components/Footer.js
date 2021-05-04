@@ -1,10 +1,9 @@
 import {Component} from "react";
 import {NavLink , withRouter} from "react-router-dom";
 import { List, Button} from 'semantic-ui-react';
-import "./Footer.css";
-import wxImg from "../images/weixin.png";
-import gzhImg from "../images/weixin.png";
-import logo from "../images/logo_blue.PNG"
+import "../assets/css/Footer.css";
+import wxImg from "../assets/images/weixin.png";
+import logo from "../assets/images/logo_blue.PNG"
 
 class Footer extends Component{
     constructor(props){
@@ -52,7 +51,7 @@ class Footer extends Component{
                 </div>
                 <div className="fImg">
                     <img alt="" src={wxImg}></img>
-                    <img alt="" src={gzhImg}></img>
+                   {/*<img alt="" src={gzhImg}></img>*/}
                 </div>
                 <div className="fCp">
                     <p>Copyright © 2021 All Rights Reserved .备案号:辽ICP备2021003034号 </p>

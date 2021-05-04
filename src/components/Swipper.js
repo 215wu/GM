@@ -1,10 +1,6 @@
 import {Component} from "react";
-/* import Img1 from "../images/sp1.png";
-import Img2 from "../images/sp2.png";
-import Img3 from "../images/sp3.png";
-import Img4 from "../images/sp4.png"; */
 import { Icon  } from 'semantic-ui-react';
-import "./Swipper.css"
+import "../assets/css/Swipper.css"
 
 
 class Swipper extends Component{

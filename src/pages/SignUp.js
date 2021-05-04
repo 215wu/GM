@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import { NavLink, withRouter } from "react-router-dom";
 import {Button,Form,Image,Header,Message} from "semantic-ui-react";
 import axios from "axios";
-import "./css/SignUp.css";
-import Logo from "../images/logo_black.PNG"
+import "../assets/css/SignUp.css";
+import Logo from "../assets/images/logo_black.PNG"
 
 
 class SignUp extends Component{

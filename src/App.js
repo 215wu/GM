@@ -5,10 +5,10 @@ import Login from "./pages/Login";
 import Signup from "./pages/SignUp";
 import Home from "./pages/Home";
 
-import Img1 from "./images/sp1.png";
-import Img2 from "./images/sp2.png";
-import Img3 from "./images/sp3.png";
-import Img4 from "./images/sp4.png";
+import Img1 from "./assets/images/sp1.png";
+import Img2 from "./assets/images/sp2.png";
+import Img3 from "./assets/images/sp3.png";
+import Img4 from "./assets/images/sp4.png";
 
 
 

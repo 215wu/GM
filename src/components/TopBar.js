@@ -1,13 +1,13 @@
 import React, { Component } from "react";
 import { NavLink, withRouter ,Link,Switch , Route} from "react-router-dom";
 import { Button} from 'semantic-ui-react';
-import Logo from "../images/logo_blue.PNG";
-import "./TopBar.css"
+import Logo from "../assets/images/logo_blue.PNG";
+import "../assets/css/TopBar.css"
 
 class TopBar extends Component{
     constructor(props){
         super(props);
-        this.state = {
+        this.state = { 
             login:false,
             
         }
