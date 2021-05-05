@@ -64,13 +64,12 @@ class Login extends Component{
                 pwd: this.state.pwd
             })
             .then(res => {
-                console.log(res);
                 if (res.data.status === true) {
 
                     //this.props.updateId(res.data.id);
                     //this.props.updateToken(res.data.token);
                     alert("登录成功！");
-                    this.props.history.push("/home");
+                    this.props.history.push(`/user/${res.data.id}`);
                 } else {
                     alert("登录有误，请查看提示信息！");
                     this.setState({
@@ -145,7 +144,12 @@ class Login extends Component{
                             <Button fluid size="large" color="blue"  type="submit" onClick={()=>this.signRequest()}>登录</Button>
                         </div>
                         <div className="field">
-                            <p>没有账号<NavLink className="path" to='/signup'><strong>去注册</strong></NavLink></p>
+                            <p>没有账号<NavLink className="path" to='/signup'><strong>去注册</strong></NavLink></p>  
+                            <p>
+                                <NavLink className="path" to='/adminLogin'><strong>管理员登录</strong></NavLink>
+                                {"\u0009"}
+                                <NavLink className="path" to='/coachLogin'><strong>教练登录</strong></NavLink>
+                            </p>
                             <NavLink className="path" to="/"><strong>回到主页</strong></NavLink>
                         </div>
                         

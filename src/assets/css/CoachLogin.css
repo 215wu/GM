@@ -1,0 +1,17 @@
+.coachLogin{
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+}
+
+.coaLoIn{
+    position: relative;
+    padding: 2vh 5vh;
+    width: 40vw;
+    top:50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    background-color:rgb(247, 172, 12);
+    text-align: center;
+    border-radius: 10px;
+}
