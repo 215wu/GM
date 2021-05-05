@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { NavLink, withRouter } from "react-router-dom";
+import { NavLink} from "react-router-dom";
 import {Button,Form,Image,Header,Message} from "semantic-ui-react";
 import axios from "axios";
 import "../assets/css/Login.css"
@@ -156,4 +156,4 @@ class Login extends Component{
     } 
 }
 
-export default withRouter(Login);
+export default Login;

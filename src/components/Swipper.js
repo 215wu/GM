@@ -2,12 +2,16 @@ import {Component} from "react";
 import { Icon  } from 'semantic-ui-react';
 import "../assets/css/Swipper.css"
 
+import Img1 from "../assets/images/sp1.png"
+import Img2 from "../assets/images/sp2.png"
+import Img3 from "../assets/images/sp3.png"
+import Img4 from "../assets/images/sp4.png"
 
 class Swipper extends Component{
     constructor(props){
         super(props);
         this.state ={
-            images : this.props.imgList,
+            images : [Img1,Img2,Img3,Img4],
             sloganList:[
                 "215GM，遇见不一样的你！",
                 "运动创造快乐，健康成就未来！",
@@ -38,7 +42,7 @@ class Swipper extends Component{
         } else {
           index--
         }
-        console.log(this.props.imgList);
+        //console.log(this.state.imgList);
         this.setState({
           index: index
         })
