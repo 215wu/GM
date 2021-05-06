@@ -56,7 +56,6 @@ class Login extends Component{
 
     signRequest(){
         if(this.verifyFormat()){
-            //console.log("格式正确！");
 
             axios
             .post("/auth/login", {

@@ -5,9 +5,9 @@ export const updateId = id => {
     };
   };
   
-  export const updateToken = token => {
-    return {
-      type: "UPDATE_TOKEN",
-      token: token
-    };
+export const updateToken = token => {
+  return {
+    type: "UPDATE_TOKEN",
+    token: token
   };
+};

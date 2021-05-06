@@ -1,0 +1,60 @@
+.admin{
+    width: 100vw;
+    background-color: rgb(61, 145, 219);
+    display: flex;
+    align-items: stretch;
+}
+
+.adminMenu{
+    width:20vw;
+    padding: 2vh 0;
+    float: left;
+    display: flex;
+    flex-direction:column;
+    text-align: center;
+    background-color: rgb(12, 71, 122);
+}
+
+
+
+#adminImg{
+    height: 15vh;
+    width: 15vh;
+    flex:0.1;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    background-color: rgb(137, 151, 151);
+}
+
+
+
+
+
+.adminMenu form{
+    display: flex;
+    flex:0.7;
+    flex-direction:column;
+    justify-content: space-evenly;
+}
+
+
+.adminMenu a{
+    padding: 1em 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    color: white;
+}
+
+.adminMenu a:hover{
+    font-size: 1.5rem;
+    color: black;
+    background-color: rgb(61, 145, 219);
+}
+
+
+.adminMain{
+    width: 80vw;
+    float: left;
+}

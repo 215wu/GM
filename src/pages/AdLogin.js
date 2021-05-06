@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import {Button,Form,Image,Header,Message} from "semantic-ui-react";
 import {NavLink} from 'react-router-dom'
+import { connect } from "react-redux";
+import { updateId, updateToken } from "../model/actions/UpdateActions";
 import Logo from "../assets/images/logo_black.PNG"
 
 import "../assets/css/CoachLogin.css"
@@ -19,7 +21,7 @@ import axios from 'axios';
 
      verityFormat(id,pwd){
         let txt = "",idFor=/[0-9]{6,12}/;
-        let pwdFor = new RegExp("[\\w|\?|\!|\,|\.|\-]{8,18}");
+        let pwdFor = new RegExp("[\\w|?|!|,|.|-]{8,18}");
         if(!idFor.test(id)){
             txt=txt+"输入账号不符合规范(账号不能为空,且为6-12位数字)\u000A";
         }
@@ -51,6 +53,9 @@ import axios from 'axios';
                 switch (res.data.flag){
                     case 0: 
                        alert("登录成功！");
+                       //console.log("登录返回的",res.data.aId,res.data.token)
+                       this.props.updateId(res.data.aId);
+                       this.props.updateToken(res.data.token);
                        this.props.history.push(`/admin/${res.data.aId}`);
                        break;
                     case 1:
@@ -123,4 +128,18 @@ import axios from 'axios';
      }
  }
  
- export default AdLogin;
+  const mapDispatchToProps = dispatch => {
+    return {
+      updateToken: token => {
+        dispatch(updateToken(token));
+      },
+      updateId: id => {
+        dispatch(updateId(id));
+      }
+    };
+  };
+
+ export default connect(
+    null,
+     mapDispatchToProps
+ )(AdLogin);
