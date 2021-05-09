@@ -12,7 +12,8 @@ class ManUser extends Component {
             id:"",
             data:[],//每次从数据库获取的数据
             doData:null,//当前要操作的数据
-            doFlag:0//当前操作的类型 0=无操作，1=添加，2=更新，3=删除，4=查找
+            doFlag:0,//当前操作的类型 0=无操作，1=添加，2=更新，3=删除
+            searchStr:""
          };
     }
     componentDidMount = ()=>{
@@ -24,7 +25,7 @@ class ManUser extends Component {
       axios
         .post("/getData/userData")
         .then(res=>{
-          console.log("res.data",res.data);
+         // console.log("res.data",res.data);
           this.setState({
             data:res.data
           }) 
@@ -50,10 +51,9 @@ class ManUser extends Component {
       document.getElementById("adminUpdateUserDialog").showModal();
     }
 
-    deleteUser = (olddData) => {
-      
+    deleteUser = (oldData) => {
       this.setState({
-        doData:{},
+        doData:oldData,
         doFlag:3
       });
       document.getElementById("adminUpdateUserDialog").showModal();
@@ -64,14 +64,31 @@ class ManUser extends Component {
         doData:oldData,
         doFlag:1
       });
-      console.log("Up : oldData :" ,this.state.doData);
       document.getElementById("adminUpdateUserDialog").showModal();
     }
 
-    searchUser = (Searchstr) => {
-      this.setState({
-        doFlag:4
-      });
+    setSearchStr = (str)=>{
+        this.setState({
+          searchStr:str
+        })
+    }
+    searchUser = () => {
+      const {searchStr} = this.state;
+      //console.log("searchStr",searchStr);
+      axios
+      .post("/searchData/userData",{
+        searchStr : searchStr
+      })
+      .then((res)=>{
+        res.data.flag?alert("查找成功"):alert("查找失败");
+        //console.log(res.data.userData);
+        this.setState({
+          data:res.data.userData
+        })
+      })
+      .catch(err=>{
+        alert(`查找失败：${err}`);
+      })
     }
     render() {
         const taoXiang = "https://react.semantic-ui.com/images/avatar/small/matthew.png";
@@ -145,7 +162,27 @@ class ManUser extends Component {
 
             case 3:
               btn = 
-              (<Button>确认删除</Button>)
+              (<Button fluid color="red" onClick={()=>{
+                document.getElementById("adminUpdateUserDialog").close();
+                  //console.log("更新后的数据",doneData);
+                  axios
+                  .post("/deleteData/userData",doneData)
+                  .then(res=>{
+                    //console.log(res.data);
+                    res.data.flag?alert("删除成功"):alert("删除失败");
+                    this.setState({}) 
+                  })
+                  .catch(err=>{
+                      console.log("删除失败",err);
+                  })
+                  setTimeout(this.updateAllData,2000) ;
+                  this.setState({
+                    doData:null,
+                    doFlag:0
+                  });
+                  }
+
+              }>确认删除</Button>)
               break;
             default:
               break;
@@ -198,10 +235,10 @@ class ManUser extends Component {
                       <Table.Header colSpan='6'>
                         <Table.Row>
                           <Table.Cell colSpan="6">
-                              <Input fluid placeholder="查询">
-                                <input></input>
-                                <Button>搜索</Button>
-                              </Input>
+                                <Input type="text" fluid placeholder='请输入查询内容...' onChange={(e)=>this.setSearchStr(e.target.value)}>
+                                  <input/>
+                                  <Button onClick={()=>this.searchUser()}>搜索</Button>
+                                </Input>
                           </Table.Cell>
                           <Table.Cell>
                           <Button onClick={()=>this.addNewUser()}>添加用户</Button>
@@ -243,13 +280,7 @@ class ManUser extends Component {
                                   <Button onClick={()=>{this.updateUser(item)}}>修改</Button>
                                 </Table.Cell>
                                 <Table.Cell>
-                                  <Button onClick={()=>{
-                                    this.setState({
-                                      doData:item
-                                    });
-                                    let Dia = document.getElementById("adminUpdateUserDialog");
-                                    Dia.showModal();
-                                  }}>删除</Button>
+                                  <Button onClick={()=>{this.deleteUser(item)}}>删除</Button>
                                 </Table.Cell>
                               </Table.Row>
                             )

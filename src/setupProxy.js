@@ -33,4 +33,20 @@ module.exports = function(app) {
       ws: true, // 启用websocket
     })
   );
+  app.use(
+    createProxyMiddleware("/deleteData",{
+      target: "http://localhost:3002",
+      changeOrigin: true,
+      secure: false, // 是否验证证书
+      ws: true, // 启用websocket
+    })
+  );
+  app.use(
+    createProxyMiddleware("/searchData",{
+      target: "http://localhost:3002",
+      changeOrigin: true,
+      secure: false, // 是否验证证书
+      ws: true, // 启用websocket
+    })
+  );
 };

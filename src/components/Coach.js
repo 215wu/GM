@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import {Table,Segment} from "semantic-ui-react"
+import {Table,Segment,Header} from "semantic-ui-react"
 import axios from "axios"
 
 class Coach extends Component{
@@ -34,7 +34,7 @@ class Coach extends Component{
                         <Table>
                             <Table.Header>
                                 <Table.Row>
-                                    <Table.Cell>简介</Table.Cell>
+                                    <Table.Cell colSpan="2">简介</Table.Cell>
                                     <Table.Cell>图片展示</Table.Cell>
                                     <Table.Cell>图片展示</Table.Cell>
                                     <Table.Cell>寄语</Table.Cell>
@@ -46,6 +46,16 @@ class Coach extends Component{
                                     <Table.Row key={key}>
                                         <Table.Cell>
                                             <img alt="" src={item.imgUrl}></img>
+                                        </Table.Cell>
+                                        <Table.Cell>
+                                            <Header>
+                                                <Header.Content>
+                                                    {item.cName}
+                                                    <Header.Subheader>{["其他","男","女"][item.sex]}</Header.Subheader>
+                                                    <Header.Subheader>{item.age}岁</Header.Subheader>
+                                                    <Header.Subheader>主修:{item.keywords}</Header.Subheader>
+                                                </Header.Content>
+                                            </Header>
                                         </Table.Cell>
                                         <Table.Cell>
                                             <img alt="" src={item.imgUrl}></img>
