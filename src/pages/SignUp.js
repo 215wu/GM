@@ -47,15 +47,27 @@ class SignUp extends Component{
            // console.log("格式正确！");
             axios
             .post("auth/signup",{
-                email:this.state.email,
-                pwd:this.state.pwd,
-                name:this.state.name
+                userEmail:this.state.email,
+                userPwd:this.state.pwd,
+                userName:this.state.name
             })
             .then(res=>{
-                //console.log("注册成功");
-                //console.log(res);
-                alert("注册成功！将自动登录！");
-                this.props.history.push("/home");
+                switch (res.data.flag) {
+                    case 1:
+                         //this.props.updateId(res.data.id);
+                         //this.props.updateToken(res.data.token);
+                         alert("注册成功！");
+                         this.props.history.push(`/user/${res.data.id}`);
+                         break;
+                     case 2:
+                         alert("邮箱已被注册！");
+                         this.setState({
+                             alert: 0b1000011
+                         });
+                         break;
+                     default:
+                         break; 
+                 }
             })
         }
     };

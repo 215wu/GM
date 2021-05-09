@@ -1,0 +1,13 @@
+.aboutBox{
+    padding: 5vw;
+}
+
+.aboutContentItem{
+    border-radius: 20px;
+    background-color: aliceblue;
+    padding: 1vw;
+    margin-bottom: 4vh;
+    opacity: 0.8;
+    color:black;
+}
+

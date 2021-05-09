@@ -1,0 +1,19 @@
+.gymCenterBoxIn ul{
+    background-color: aliceblue;
+}
+
+.gymCenterBox{
+    background-color: aliceblue;
+    margin: 2vh;
+    opacity: 0.8;
+    border-radius: 20px;
+}
+
+.gymCenterBoxIn{
+    padding: 1vh;
+}
+
+.gymCenImg{
+    width: 50vw;
+    height: auto;
+}

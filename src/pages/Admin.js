@@ -31,11 +31,14 @@ class Admin extends Component {
                            // console.log(...x);
                             let domSet = new Set([...x]);
                             domSet.forEach((item)=>{
-                               item.style.backgroundColor = "transparent";
+                                item.style.backgroundColor = "transparent";
                             });
                             //console.log(...x);
-                           // console.log(e.target);
-                            e.target.parentNode.style.backgroundColor = "rgb(61, 145, 219)";
+                            
+                           if( e.target.parentNode.getAttribute("class") === "field"){
+                               e.target.parentNode.style.backgroundColor = "rgb(61, 145, 219)";
+                           }
+                            
                             //console.log(e.target);
 
                         }

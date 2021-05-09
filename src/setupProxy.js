@@ -2,7 +2,7 @@ const  { createProxyMiddleware } = require('http-proxy-middleware');
 
 module.exports = function(app) {
   app.use(
-    createProxyMiddleware("/api",{
+    createProxyMiddleware("/getData",{
       target: "http://localhost:3002",
       changeOrigin: true,
       secure: false, // 是否验证证书
@@ -16,5 +16,21 @@ module.exports = function(app) {
       secure: false, // 是否验证证书
       ws: true, // 启用websocket
       })
+  );
+  app.use(
+    createProxyMiddleware("/updateData",{
+      target: "http://localhost:3002",
+      changeOrigin: true,
+      secure: false, // 是否验证证书
+      ws: true, // 启用websocket
+      })
+  );
+  app.use(
+    createProxyMiddleware("/addData",{
+      target: "http://localhost:3002",
+      changeOrigin: true,
+      secure: false, // 是否验证证书
+      ws: true, // 启用websocket
+    })
   );
 };
