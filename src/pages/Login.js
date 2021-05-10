@@ -2,6 +2,9 @@ import React, { Component } from "react";
 import { NavLink} from "react-router-dom";
 import {Button,Form,Image,Header,Message} from "semantic-ui-react";
 import axios from "axios";
+import {connect} from "react-redux"
+
+import updataUserDataAction from "../model/actions/UpdateUserDataAction"
 import "../assets/css/Login.css"
 import Logo from "../assets/images/logo_black.PNG"
 
@@ -63,18 +66,15 @@ class Login extends Component{
                 pwd: this.state.pwd
             })
             .then(res => {
-                if (res.data.status === true) {
-
+                if (res.data.flag === true) {
+                    console.log("Login---res.data.userData:",res.data.userData);
                     //this.props.updateId(res.data.id);
-                    //this.props.updateToken(res.data.token);
+                    this.props.sendUpdateUserDataAction(res.data.userData);
                     alert("登录成功！");
-                    this.props.history.push(`/user/${res.data.id}`);
-                } else {
-                    alert("登录有误，请查看提示信息！");
-                    this.setState({
-                        alert: 0b1000011
-                    });
 
+                    this.props.history.push(`/user/${res.data.userData.userId}`);
+                } else {
+                    alert(res.data.info);
                 }
                 //console.log(res);
             })
@@ -159,4 +159,11 @@ class Login extends Component{
     } 
 }
 
-export default Login;
+const mapDispatchToProps = dispatch =>{
+   return{
+       sendUpdateUserDataAction:(userData)=>{
+           dispatch(updataUserDataAction(userData))
+       }
+   }
+}
+export default connect(null, mapDispatchToProps)(Login);

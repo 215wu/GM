@@ -11,6 +11,12 @@ import Home from "../../pages/Home"
 import Login from "../../pages/Login"
 import SignUp from "../../pages/SignUp"
 import User from "../../pages/User"
+    import Book from "../../components/User/Book"
+    import Update from "../../components/User/Update"
+    import PurVip from "../../components/User/PurVip"
+    import PurCourse from "../../components/User/PurCourse"
+    import Search from "../../components/User/Search"
+    import Welcome from "../../components/User/Welcome"
 
 import Admin from "../../pages/Admin"
     import UpdateAdInfo from "../../components/Admin/UpdateAdInfo"
@@ -81,7 +87,34 @@ let routes = [
     },
     {
         path:"/user/:uid",
-        component:User
+        component:User,
+        routes:[
+            {
+                path:"/user/:uid/",
+                exact:true,
+                component:Welcome
+            },
+            {
+                path:"/user/:uid/purCourse",
+                component:PurCourse
+            },
+            {
+                path:"/user/:uid/purVip",
+                component:PurVip
+            },
+            {
+                path:"/user/:uid/update",
+                component:Update
+            },
+            {
+                path:"/user/:uid/bookGym",
+                component:Book
+            },
+            {
+                path:"/user/:uid/search",
+                component:Search
+            }
+        ]
     },
     {
         path:"/admin/:aid",

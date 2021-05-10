@@ -1,11 +1,11 @@
 const initState ={
     id : null,
     token: null,
+    userData:{}
 };
 
 const reducer = (state = initState,action)=>{
-    //console.log(`reducerState:${state}`,`acction:${action.type}`);
-
+    console.log(`reducerState:${state}`,`acction:${action.type}`);
     switch (action.type){
         case "UPDATE_ID":
             //console.log("updateId&stateBefore:",state);
@@ -18,6 +18,12 @@ const reducer = (state = initState,action)=>{
             return {
                 ...state,
                 token:action.token
+            }
+        case "UPDATE_USERDATA":
+            //console.log("updateUserData&stateBefore:",state);
+            return {
+                ...state,
+                userData:action.userData
             }
         default:
             break;

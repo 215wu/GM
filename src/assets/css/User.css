@@ -1,0 +1,49 @@
+.userBox{
+    background-color: #87F5FF;
+    min-height: 100vh;
+    color: azure;
+    vertical-align:top;
+}
+
+.userMenuBox{
+    background-color: #00535A;
+    width:20%;
+    display: inline-block;
+    min-height:100vh;
+    vertical-align: top;
+}
+
+.userMenuBox a{
+    display: block;
+    color: white;
+    font-size: 2rem;
+    padding: 2rem 0;
+    text-align: center;
+}
+
+.userTXBox{
+    padding: 2vh;
+    display: flex;
+    justify-content: space-around;
+}
+
+.userMenuBox a:hover{
+    color: black;
+    background-color: #87F5FF;
+}
+
+
+.userDoBox{
+    display: inline-block;
+    width: 80%;
+    min-height: 100vh;
+    vertical-align: top;
+}
+
+.userUserUpdateBox{
+    margin: 5vh 2vw 0 2vw;
+    padding: 2vh 3vw;
+    border-radius: 20px;
+    background-color: aliceblue;
+    opacity: 0.8;
+}
