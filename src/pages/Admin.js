@@ -76,6 +76,9 @@ class Admin extends Component {
                         <div className="field">
                             <NavLink to={`${this.props.match.url}/managePurchaseRecord`}>购课信息管理</NavLink>
                         </div>
+                        <div className="field">
+                            <NavLink to="/adminLogin">退出登录</NavLink>
+                        </div>
                     </Form>
                 </div>
                 <div className="adminMain">

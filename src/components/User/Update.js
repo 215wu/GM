@@ -29,17 +29,12 @@ class Update extends Component {
                         <Form.Field control={Input} label='邮箱' defaultValue={data.userEmail} onChange={(e)=>data.userEmail=e.target.value}/>
                         <Form.Field control={Input} label='电话' defaultValue={data.phone} onChange={(e)=>data.phone=e.target.value}/>
                         <Form.Field control={Input} label='地址' defaultValue={data.address} onChange={(e)=>data.address=e.target.value}/>
-                        <Form.Field>
-                          <label>会员等级</label>
-                          <select defaultValue={data.type} onChange={(e)=>data.type=e.target.value}>
-                            <option value="0">初级</option>
-                            <option value="1">中级</option>
-                            <option value="2">高级</option>
-                          </select>
-                        </Form.Field>
+                        <Form.Field control={Input} label='密保问题' defaultValue={data.question} onChange={(e)=>data.question=e.target.value}/>
+                        <Form.Field control={Input} label='答案' defaultValue={data.answer} onChange={(e)=>data.answer=e.target.value}/>
+                        
                         <br/>
                         <Form.Field >
-                          <Button fluid color="blue" onClick={()=>this.props.setDataToUser(data)}>确认更新</Button>
+                          <Button fluid color="blue" onClick={()=>this.props.sendDataToUser(data,"UPDATE_USERDATA")}>确认更新</Button>
                         </Form.Field>
                     </Form>
                     :

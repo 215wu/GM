@@ -11,7 +11,8 @@ class User extends Component {
     constructor(props) {
         super(props);
         this.state = { 
-            data:null
+            data:null,//用户数据
+            dataTo:null
          };
     }
 
@@ -22,10 +23,21 @@ class User extends Component {
         })
     }
 
-    getDataFromUpdate = (updatedData)=>{
-        console.log("User:getDataFromUpdate:",updatedData);
+    getDataFrom = (doneData,doFlag)=>{
+        switch(doFlag){
+            case "UPDATE_USERDATA":
+                this.updateUserData(doneData);
+                break;
+            default:
+                break;
+        }
+    }
+
+
+    updateUserData = (doneData)=>{
+        console.log("User:getDataFromUpdate:",doneData);
         axios
-        .post("/updateData/userData",updatedData)
+        .post("/updateData/userData",doneData)
         .then((res)=>{
             if(res.data.flag){
                 //console.log(res.data.userData);
@@ -40,7 +52,96 @@ class User extends Component {
         })
         console.log("User--UpdatedProps:",this.props);
         
+    } 
+
+    setShowDataTo = (Info,doFlag)=>{
+        switch(doFlag){
+            case "BOOK_GYM_ALL":
+                console.log("User---get:doFlag:BOOK_GYM_ALL")
+                this.setAllGymData();
+                break;
+            case "PUR_COURSE_ALL":
+                console.log("User---get:doFlag:PUR_COURSE_ALL")
+                this.setAllCouData();
+                break;
+            case "PUR_COURSE_SEARCH":
+                console.log("User---get:doFlag:PUR_COURSE_SEARCH")
+                this.setSearchCouData(Info);
+                break;
+            case "BOOK_GYM_SEARCH":
+                console.log("User---get:doFlag:BOOK_GYM_SEARCH")
+                this.setSearchGymData(Info);
+                break;
+            default:
+                break;
+        }
+    } 
+
+    setAllGymData = ()=>{
+         console.log("User---setAllGymData");
+         axios
+        .post("/getData/gymData",{})
+        .then((res)=>{
+            this.setState({
+                dataTo:res.data
+            });
+
+        })
+        .catch((err)=>{
+            console.log("获取健身房中心数据失败",err);
+        })
     }
+    
+    setAllCouData = ()=>{
+        console.log("User---setAllCouData");
+        axios
+       .post("/getData/courseData",{})
+       .then((res)=>{
+           console.log("User,getAllCouData",res.data);
+           this.setState({
+               dataTo:res.data
+           });
+
+       })
+       .catch((err)=>{
+           console.log("获取课程数据失败",err);
+       })
+    }
+
+    setSearchCouData = (str)=>{
+        console.log("User---setSearchCouData");
+        axios
+        .post("/searchData/courseData",{
+            searchStr:str
+        })
+        .then((res)=>{
+           this.setState({
+               dataTo:res.data
+           });
+
+        })
+        .catch((err)=>{
+           console.log("搜索课程数据失败",err);
+        })
+    }
+
+    setSearchGymData = (str)=>{
+        console.log("User---setSearchGymData");
+        axios
+        .post("/searchData/gymData",{
+            searchStr:str
+        })
+        .then((res)=>{
+           this.setState({
+               dataTo:res.data
+           });
+
+        })
+        .catch((err)=>{
+           console.log("搜索健身中心数据失败",err);
+        })
+    }
+
     render() {
         return (
             <div className="userBox" >
@@ -55,8 +156,14 @@ class User extends Component {
                            <Route key={key} path={item.path} 
                                     render={
                                         (props)=>(
-                                            <item.component {...props} data={this.state.data} 
-                                            setDataToUser={(data)=>this.getDataFromUpdate(data)} />
+                                            <item.component {...props} data={this.props.userData} 
+                                            sendDataToUser={(data,doFlag)=>this.getDataFrom(data,doFlag)}
+                                            showData = {this.state.dataTo}
+                                            sendDeal = {(Info,doFlag)=>this.setShowDataTo(Info,doFlag)} />
+                                            //sendDataToUser:Update用于将更新后的信息给User完成更新
+                                            //data用于接收用户信息
+                                            //showData接收各个页面的展示信息
+                                            //
                                         ) 
                                     }
                             />

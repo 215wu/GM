@@ -1,8 +1,8 @@
 .userBox{
     background-color: #87F5FF;
     min-height: 100vh;
-    color: azure;
     vertical-align:top;
+    display: flex;
 }
 
 .userMenuBox{
@@ -46,4 +46,28 @@
     border-radius: 20px;
     background-color: aliceblue;
     opacity: 0.8;
+}
+
+.userWelcomeBox,.userBookBoxIn,.userPurCouBox,.userPurVipBox{
+    margin: 5vh 2vw 0 2vw;
+    padding: 2vh 3vw;
+    border-radius: 20px;
+    background-color: aliceblue;
+    opacity: 0.8;
+}
+
+.userWelcomeContent,.userPurVipContent{
+    font-size: 1.4em;
+    font-family:"KaiTi";
+}
+
+.userBookBoxIn img{
+    width: 30vw;
+    height: auto;
+    left:50%;
+    transform:translateX(-50%)
+}
+
+.userBookBoxIn td{
+    text-align: center;
 }

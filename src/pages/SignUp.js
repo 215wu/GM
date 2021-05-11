@@ -57,7 +57,7 @@ class SignUp extends Component{
                          //this.props.updateId(res.data.id);
                          //this.props.updateToken(res.data.token);
                          alert("注册成功！");
-                         this.props.history.push(`/user/${res.data.id}`);
+                         this.props.history.push("/login");
                          break;
                      case 2:
                          alert("邮箱已被注册！");
